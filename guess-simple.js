@@ -1,4 +1,4 @@
-//Guess Simple by Kim Chung
+/* Guess Simple by Kim Chung */
 
 var answer = Math.floor(Math.random()*100)+1;
 console.log(answer);
