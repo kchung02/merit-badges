@@ -3,21 +3,27 @@
 /* Global */
 var games = 0;
 var again = true;
+var next = 0;
+var count = 0;
+var turns = 0;
+var turn = 0;
 
 /* Main */
 while (again == true){
-	var count = 0;
-	var turns = 0;
-	var next = games%2;
+	count = 0;
+	turns = 0;
+	turn = 0;
+	next = games%2;
 	while (count < 21){
 		if (next == 0){
-			var turn = CPUTurn(turn);
+			turn = CPUTurn();
+			alert("The computer picked "+turn+".");
 			count += turn;
 			alert("The count is now "+count+".");
 			next = nextSwitch(next);
 		}
 		else {
-			turn = userTurn(turn);
+			turn = userTurn();
 			count += turn;
 			alert("The count is now "+count+".");
 			next = nextSwitch(next);
@@ -25,29 +31,33 @@ while (again == true){
 	}
 	declareWinner();
 	games++;
-	again = playAgain(again);
+	alert("Games played = "+games);
+	if (playAgain() == false) break;
 }
 
 /* Functions */
-function CPUTurn(turn){
+function CPUTurn(){
 	turn = Math.floor(Math.random()*3)+1;
 	return turn;
 }
 
-function userTurn(turn){
+function nextSwitch(next){
+	if (next == 0){
+		next = 1;
+		return next;
+	}
+	else {
+		next = 0;
+		return next;
+	}
+}
+
+function userTurn(){
 	turn = prompt("Pick a number 1-3");
 	if (turn > 0 && turn < 4){
 		return Number(turn);
 	}
 	else alert("Guess is out of range, try again.");
-}
-
-function playAgain(again){
-	again = prompt("Play again? y = yes");
-	if (again = "y"){
-		return true;
-	}
-	else return false;
 }
 
 function declareWinner(){
@@ -57,12 +67,10 @@ function declareWinner(){
 	else alert("You win!");
 }
 
-function nextSwitch(next){
-	if (next == 0){
-		next = 1;
-		return next;
+function playAgain(){
+	again = prompt("Play again? y = yes");
+	if (again = "y"){
+		return true;
 	}
-	else {
-		return next;
-	}
+	else return false;
 }
