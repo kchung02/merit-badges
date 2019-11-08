@@ -53,11 +53,15 @@ function nextSwitch(next){
 }
 
 function userTurn(){
-	turn = prompt("Pick a number 1-3");
-	if (turn > 0 && turn < 4){
-		return Number(turn);
+	var goodTurn = false;
+	while (goodTurn == false){
+		turn = prompt("Pick a number 1-3");
+		if (turn > 0 && turn < 4){
+			goodTurn = true;
+			return Number(turn);
+		}
+		else alert("Guess is out of range, try again.");
 	}
-	else alert("Guess is out of range, try again.");
 }
 
 function declareWinner(){
@@ -72,5 +76,8 @@ function playAgain(){
 	if (again == "y"){
 		return true;
 	}
-	else return false;
+	else {
+		alert("Thanks for playing!");
+		return false;
+	}
 }
