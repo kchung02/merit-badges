@@ -32,7 +32,7 @@ while (again == true){
 	declareWinner();
 	games++;
 	alert("Games played = "+games);
-	if (playAgain() == false) break;
+	again = playAgain();
 }
 
 /* Functions */
@@ -69,7 +69,7 @@ function declareWinner(){
 
 function playAgain(){
 	again = prompt("Play again? y = yes");
-	if (again = "y"){
+	if (again == "y"){
 		return true;
 	}
 	else return false;
