@@ -55,12 +55,13 @@ function nextSwitch(next){
 function userTurn(){
 	var goodTurn = false;
 	while (goodTurn == false){
-		alert("Guess is out of range, try again.");
+		turn = prompt("Pick a number 1-3");
+		if (turn > 0 && turn < 4){
+			goodTurn = true;
+			return Number(turn);
+		}
+		else alert("Guess is out of range, try again.");
 	}
-	turn = prompt("Pick a number 1-3");
-	if (turn > 0 && turn < 4){
-	goodTurn = true;
-	return Number(turn);
 }
 
 function declareWinner(){
