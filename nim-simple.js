@@ -56,13 +56,11 @@ function userTurn(){
 	var goodTurn = false;
 	while (goodTurn == false){
 		alert("Guess is out of range, try again.");
-		else {
-			turn = prompt("Pick a number 1-3");
-			if (turn > 0 && turn < 4){
-			goodTurn = true;
-			return Number(turn);
-		}
 	}
+	turn = prompt("Pick a number 1-3");
+	if (turn > 0 && turn < 4){
+	goodTurn = true;
+	return Number(turn);
 }
 
 function declareWinner(){
