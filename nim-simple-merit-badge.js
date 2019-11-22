@@ -1,4 +1,4 @@
-//Nim Simple by Kim Chung//
+/* Nim Simple by Kim Chung */
 
 var games = 0;
 var again = true;
