@@ -3,36 +3,24 @@
 /* Global */
 var games = 0;
 var again = true;
-var next = 0;
-var count = 0;
-var turns = 0;
-var turn = 0;
 
 /* Main */
 while (again == true){
-	count = 0;
-	turns = 0;
-	turn = 0;
-	next = games%2;
+	var count = 0;
+	var next = games%2;
 	while (count < 21){
 		if (next == 0){
 			turn = cpuTurn();
-			alert("The computer picked "+turn+".");
-			count += turn;
-			alert("The count is now "+count+".");
+			alert("The count is now "+count);
 			next = nextSwitch(next);
 		}
 		else {
 			turn = userTurn();
-			count += turn;
 			alert("The count is now "+count+".");
 			next = nextSwitch(next);
 		}
 	}
-	declareWinner();
-	games++;
-	alert("Games played = "+games);
-	again = playAgain();
+	again = declareWinner();
 }
 
 /* Functions */
@@ -84,17 +72,5 @@ function declareWinner(){
 		again = false;
 		alert("Thanks for playing!");
 		return again;
-	}
-}
-}
-
-function playAgain(){
-	again = prompt("Play again? y = yes");
-	if (again == "y"){
-		return true;
-	}
-	else {
-		alert("Thanks for playing!");
-		return false;
 	}
 }
