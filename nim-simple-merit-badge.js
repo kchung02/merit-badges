@@ -2,29 +2,29 @@
 
 var games = 0;
 var again = true;
-//while (again == true){
+while (again == true){
 	var count = 0;
 	var next = games%2;
-	//while (count < 21){
+	while (count < 21){
 		if (next == 0){
-			//count = cpuTurn();
+			count = cpuTurn();
 			alert("The count is now "+count);
-			//next = nextSwitch();
+			next = nextSwitch();
 		}
 		else {
-			//count = userTurn();
+			count = userTurn();
 			alert("The count is now "+count);
-			//next = nextSwitch();
+			next = nextSwitch();
 		}
-	//}
-	//again = declareWinner();
-//}
+	}
+	again = declareWinner();
+}
 
 function cpuTurn(){
     if (count == 19 || count == 20) turn = 1;
     else if (count == 18) turn = Math.floor(Math.random()*2)+1;
     else turn = Math.floor(Math.random()*3)+1;
-    alert("CPU counts "+turn+".");
+    alert("CPU counts "+turn);
     count += turn;
     return count;
 }
