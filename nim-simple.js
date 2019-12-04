@@ -11,26 +11,26 @@ while (again == true){
 	while (count < 21){
 		if (next == 0){
 			count = cpuTurn();
-			alert("The count is now "+count);
-			//next = nextSwitch();
+			next = nextSwitch();
 		}
 		else {
 			count = userTurn();
-			alert("The count is now "+count);
 			next = nextSwitch();
 		}
 	}
 	again = declareWinner();
 }
+alert("Thanks for playing!");
 
 /* Functions */
 function cpuTurn(){
-    if (count == 19 || count == 20) turn = 1;
-    else if (count == 18) turn = Math.floor(Math.random()*2)+1;
-    else turn = Math.floor(Math.random()*3)+1;
-    alert("CPU counts "+turn);
-    count += turn;
-    return count;
+	if (count == 19 || count == 20) turn = 1;
+	else if (count == 18) turn = Math.floor(Math.random()*2)+1;
+	else turn = Math.floor(Math.random()*3)+1;
+	alert("CPU counts "+turn);
+	count += turn;
+	alert("The count is now "+count);
+	return count;
 }
 
 function nextSwitch(){
@@ -57,6 +57,7 @@ function userTurn(){
 			goodTurn = false;
 		}
 	}
+	alert("The count is now "+count);
 	return count;
 }
 
@@ -64,14 +65,6 @@ function declareWinner(){
 	if (next == 0) alert("You lose!");
 	else alert("You win!");
 	games++
-	again = prompt("Play again? y = yes");
-	if (again == "y"){
-		again = true;
-		return again;
-	}
-	else {
-		again = false;
-		alert("Thanks for playing!");
-		return again;
-	}
+	again = confirm("Play again?");
+	return again;
 }
