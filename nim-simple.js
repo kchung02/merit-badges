@@ -5,23 +5,23 @@ var games = 0;
 var again = true;
 
 /* Main */
-//while (again == true){
+while (again == true){
 	var count = 0;
 	var next = games%2;
-	//while (count < 21){
+	while (count < 21){
 		if (next == 0){
-			//count = cpuTurn();
+			count = cpuTurn();
 			alert("The count is now "+count);
 			//next = nextSwitch();
 		}
 		else {
-			//count = userTurn();
+			count = userTurn();
 			alert("The count is now "+count);
-			//next = nextSwitch();
+			next = nextSwitch();
 		}
-	//}
-	//again = declareWinner();
-//}
+	}
+	again = declareWinner();
+}
 
 /* Functions */
 function cpuTurn(){
