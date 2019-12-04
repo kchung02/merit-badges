@@ -55,6 +55,7 @@ function userTurn(){
 		else {
 			alert("Invalid input, try again.");
 			goodTurn = false;
+		}
 	}
 	return count;
 }
