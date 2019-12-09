@@ -11,7 +11,7 @@ while (again == true){
 	while (count < 21){
 		if (next == 0){
 			count = cpuTurn(count);
-			next = nextSwitch();
+			next = nextSwitch(next);
 		}
 		else {
 			count = userTurn(count);
