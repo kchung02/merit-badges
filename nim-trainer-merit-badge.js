@@ -3,6 +3,7 @@
 /* Initialize Globals */
 var again = true;
 var games = 0;
+var gameType = null;
 
 /* Main */
 alert("Welcome to Nim Trainer!");
@@ -10,8 +11,12 @@ while (again == true){
 	var count = 0;
 	var turn = 0;
 	var next = games%2;
+	gameType = pickGame();
 	while (count < 21){
-		if (next == 0) count = cpuTrainer(count);
+		if (next == 0) {
+			if (gameType == "simple") count = cpuTurn(count);
+			else count = cpuTrainer(count);
+		}
 		else count = userTurn(count);
 		next = nextSwitch(next);
 	}
@@ -21,7 +26,27 @@ alert("Thanks for playing!");
 
 /* Functions */
 
-/* CPU Turn -- random turn but not purposely losing or going over 21 */
+/* Pick Game -- decide whether you want to play nim simple or nim trainer */
+function pickGame(){
+	gameType = prompt("Would you like to play simple or trainer?");
+	return gameType;
+}
+
+/* CPU Turn -- random turn but doesn't purposely lose or go over 21 */
+function cpuTurn(count){
+	let goodTurn = false;
+	let turn=0;
+	while (goodTurn == false) {
+		turn = Math.floor(Math.random()*3)+1;
+		if (turn == 1 || turn > 1 && count+turn < 21) goodTurn = true;
+	}
+	alert("CPU counts "+turn);
+	count += turn;
+	alert("The count is now "+count);
+	return count;
+}
+
+/* CPU Trainer -- calculated turn and doesn't purposely lose or go over 21 */
 function cpuTrainer(count){
 	if (count%4 == 0){
 		if (count == 20) turn = 1;
