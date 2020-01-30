@@ -26,12 +26,11 @@ function cpuTurn(){
 }
 
 function turnWinner(){
-	if ((pChoice == "rock" && cChoice == "scissors") || (pChoice == "paper" && cChoice == "rock") || (pChoice == "scissors" && cChoice == "paper")){
+	if (pChoice == "rock" && cChoice == "scissors" || pChoice == "paper" && cChoice == "rock" || pChoice == "scissors" && cChoice == "paper"){
 		alert("You won round "+turn+"!");
 		score++;
 	}
-	else if 
-	(pChoice == "rock" && cChoice == "paper" || pChoice == "paper" && cChoice == "scissors" || pChoice == "scissors" && cChoice == "rock"){
+	else if (pChoice == "rock" && cChoice == "paper" || pChoice == "paper" && cChoice == "scissors" || pChoice == "scissors" && cChoice == "rock"){
 		alert("CPU won round "+turn+"!");
 		score--;
 	}
