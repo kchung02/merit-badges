@@ -3,38 +3,41 @@
 var rounds = prompt("Best out of?");
 var rPs = ["rock", "paper", "scissors"];
 var score = 0;
+var pChoice = null;
+var cChoice = null;
 
-for (var turn = 0; turn < rounds; turn++){
-	userTurn();
+for (var turn = 1; turn <= rounds; turn++){
+	pChoice = userTurn();
 	if (pChoice == "q") turn = rounds;
-	else cpuTurn();
-	if (pChoice == cChoice){
-		alert("It's a tie!");
-		turn--;
-	}
-	else turnWinner();
+	else cChoice = cpuTurn();
+	turnWinner();
 }
 gameWinner();
 
 function userTurn(){
-	let pChoice = prompt("Rock, paper, or scissors?");
-	returm pChoice;
+	pChoice = prompt("Rock, paper, or scissors?");
+	return pChoice;
 }
 
 function cpuTurn(){
-	let cChoice = rPs[Math.floor(Math.random()*3)];
+	cChoice = rPs[Math.floor(Math.random()*3)];
 	alert("CPU chose "+cChoice);
 	return cChoice;
 }
 
 function turnWinner(){
-	if (pChoice == "rock" && cChoice == "scissors" || pChoice == "paper" && cChoice == "rock" || pChoice == "scissors" && cChoice == "paper"){
-		alert("You won round "+turn);
+	if ((pChoice == "rock" && cChoice == "scissors") || (pChoice == "paper" && cChoice == "rock") || (pChoice == "scissors" && cChoice == "paper")){
+		alert("You won round "+turn+"!");
 		score++;
 	}
-	else {
-		alert("CPU won round "+turn);
+	else if 
+	(pChoice == "rock" && cChoice == "paper" || pChoice == "paper" && cChoice == "scissors" || pChoice == "scissors" && cChoice == "rock"){
+		alert("CPU won round "+turn+"!");
 		score--;
+	}
+	else {
+		alert("It's a tie!");
+		turn--;
 	}
 }
 
