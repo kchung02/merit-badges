@@ -1,3 +1,5 @@
+/*Mad Libs by Kim Chung*/
+
 /* Mad Libs - JS - Only version
  * See flowchart: https://www.lucidchart.com/documents/view/1ac364ec-8af0-4668-b874-f3eba4b9e570
  * Traditional MadLibs game: Author creates a sentence, decides which words to get replaced, enters
