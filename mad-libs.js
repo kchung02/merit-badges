@@ -25,9 +25,7 @@ function main(){
     var sentence = [];
     var replacements = [];
     authorSetup();
-    if (again == true) main();
-    else alert("Thanks for playing!");
-    
+
   /* Functions */
 
   /* Function authorSetup
@@ -41,14 +39,13 @@ function authorSetup(){
     sentenceString = prompt("Insert a sentence:");
     sentence = sentenceString.split(" ");
     toReplace = prompt("How many words do you want to replace?");
-    for (var i = 0, i < toReplace, i++){
+    for (var i = 0; i < toReplace; i++){
         replaceIndex = prompt("Which word would you like to replace?");
-        replaceIndex--;
         replacements[i] = replaceIndex;
-        var partOfSpeech = prompt("What part of speech is "+sentence[replaceIndex]+"?");
+        var partOfSpeech = prompt("What part of speech is "+replaceIndex+"?");
         sentence[replacements[i]] = partOfSpeech;
     }
-    alert("Thanks Author, go get Player now!")
+    alert("Thanks Author, go get Player now!");
     playerPopulate();
 }
     
@@ -58,11 +55,11 @@ function authorSetup(){
    * @return none
    */
 function playerPopulate(){
-    for (var i = 0, i < toReplace, i++){
+    for (var i = 0; i < toReplace; i++){
         replacement = prompt("Enter a "+sentence[replacements[i]]+":");
         sentence[replacements[i]] = replacement;
     }
-    diplayResult();
+    displayResult();
 }
 	
  /* Function displayResult
@@ -77,6 +74,8 @@ function displayResult(){
     var ready = confirm("Get Author then press OK to see new sentence.");
     alert(newSentence);
     var again = confirm("Play again?");
+    if (again == true) main();
+    else alert("Thanks for playing!");
     return again;
 }
     
