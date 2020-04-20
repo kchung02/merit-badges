@@ -41,8 +41,9 @@ function authorSetup(){
     toReplace = prompt("How many words do you want to replace?");
     for (var i = 0; i < toReplace; i++){
         replaceIndex = prompt("Which word would you like to replace?");
+        replaceIndex--;
         replacements[i] = replaceIndex;
-        var partOfSpeech = prompt("What part of speech is "+replaceIndex+"?");
+        var partOfSpeech = prompt("What part of speech is "+sentence[replaceIndex]+"?");
         sentence[replacements[i]] = partOfSpeech;
     }
     alert("Thanks Author, go get Player now!");
