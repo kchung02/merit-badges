@@ -1,4 +1,4 @@
-/*Mastermind by Kim Chung*/
+/*Mastermind 1 by Kim Chung*/
 
 var code = [];
 var colors = [];
