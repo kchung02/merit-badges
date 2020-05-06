@@ -18,7 +18,7 @@ else console.log("Quitter!");
 
 function setUp(){
     for(var peg = 0; peg < 4; peg++){
-        var color = Math.floor(Math.random()*5);
+        var color = Math.floor(Math.random()*6);
         code[peg] = colors[color];
     }
     alert("The code is: "+code);
