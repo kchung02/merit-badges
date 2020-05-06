@@ -1,22 +1,29 @@
-/*Mastermind 1 by Kim Chung*/
+/*Mastermind by Kim Chung*/
 
-var code = [];
-var colors = [];
-var guess = [];
-var feedback = [];
-setUp();
-getGuess();
-analyzeGuess();
-console.log(guess, feedback);
+main();
 
+function main(){
+    alert("Welcome to Mastermind!");
+    var code = [];
+    var colors = [];
+    var guess = [];
+    var feedback = [];
+    setUp();
+    getGuess();
+    analyzeGuess();
+    alert(guess, feedback);
+    alert("Thanks for playing!");
+}
 
 function setUp(){
     var peg = 0;
     while(peg > -1 && peg < 4){
         var color = Math.floor(Math.random()*3)+1;
+        alert("color is: "+color);
         code[peg] = colors[color];
+        peg = 4;
     }
-    console.log(code);
+    alert(code);
     return code;
 }
 
