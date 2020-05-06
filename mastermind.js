@@ -1,6 +1,6 @@
 /*Mastermind by Kim Chung*/
 
-console.log("Welcome to Mastermind!");
+alert("Welcome to Mastermind!");
 var code = [], colors = ["r", "y", "g", "c", "b", "w"], guess = [], feedback = [], turn = 0;
 setUp();
 while(feedback[3] != "b" && guess[0] != "q"){
@@ -8,12 +8,12 @@ while(feedback[3] != "b" && guess[0] != "q"){
     feedback = [];
     getGuess();
     analyzeGuess();
-    console.log("Turn "+turn, "Your guess was: "+guess, "Feedback: "+feedback);
+    alert("Turn "+turn+"\nYour guess was: "+guess+"\nFeedback: "+feedback);
 }
 if (feedback[3] == "b"){
-    console.log("Congrats, you guessed it in "+turn+" turns! Thanks for playing!");
+    alert("Congrats, you guessed it in "+turn+" turns!\nThanks for playing!");
 }
-else console.log("Quitter!");
+else alert("Quitter!");
 
 
 function setUp(){
