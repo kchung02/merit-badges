@@ -1,29 +1,27 @@
 /*Mastermind by Kim Chung*/
 
-main();
-
-function main(){
-    alert("Welcome to Mastermind!");
-    var code = [];
-    var colors = [];
-    var guess = [];
-    var feedback = [];
-    setUp();
+console.log("Welcome to Mastermind!");
+var code = [], colors = ["r", "y", "g", "c", "b", "w"], guess = [], feedback = [], turn = 0;
+setUp();
+while(feedback[3] != "b" && guess[0] != "q"){
+    turn++;
+    feedback = [];
     getGuess();
     analyzeGuess();
-    alert(guess, feedback);
-    alert("Thanks for playing!");
+    console.log("Turn "+turn, "Your guess was: "+guess, "Feedback: "+feedback);
 }
+if (feedback[3] == "b"){
+    console.log("Congrats, you guessed it in "+turn+" turns! Thanks for playing!");
+}
+else console.log("Quitter!");
+
 
 function setUp(){
-    var peg = 0;
-    while(peg > -1 && peg < 4){
-        var color = Math.floor(Math.random()*3)+1;
-        alert("color is: "+color);
+    for(var peg = 0; peg < 4; peg++){
+        var color = Math.floor(Math.random()*5);
         code[peg] = colors[color];
-        peg = 4;
     }
-    alert(code);
+    alert("The code is: "+code);
     return code;
 }
 
@@ -36,20 +34,23 @@ function getGuess(){
 function analyzeGuess(){
     var guessedCode = [];
     var goodGuesses = [];
-    for(var i = 0; i < 3; i++){
+    for(var i = 0; i < 4; i++){
         if (guess[i] == code[i]){
             feedback.push("b");
             guessedCode.push(i);
             goodGuesses.push(i);
         }
     }
-    for(var g = 0; g < 3; g++){
-        for(var c = 0; c < 3; c++){
-            if (goodGuesses.includes(g) == false || guessedCode.includes(c) == false){
-                if (guess[g] == code[c]){
-                    feedback.push("w");
-                    guessedCode.push(c);
-                    goodGuesses.push(g);
+    for(var g = 0; g < 4; g++){
+        if (goodGuesses.includes(g) == false){
+            for(var c = 0; c < 4; c++){
+                if (guessedCode.includes(c) == false){
+                    if (guess[g] == code[c]){
+                        feedback.push("w");
+                        guessedCode.push(c);
+                        goodGuesses.push(g);
+                        break;
+                    }
                 }
             }
         }
