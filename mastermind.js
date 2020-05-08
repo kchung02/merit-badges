@@ -9,6 +9,7 @@ while(feedback[3] != "b" && guess[0] != "q"){
     getGuess();
     analyzeGuess();
     alert("Turn "+turn+"\nYour guess was: "+guess+"\nFeedback: "+feedback);
+    console.log("Turn "+turn+"\nYour guess was: "+guess+"\nFeedback: "+feedback);
 }
 if (feedback[3] == "b"){
     alert("Congrats, you guessed it in "+turn+" turns!\nThanks for playing!");
