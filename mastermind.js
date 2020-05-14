@@ -1,23 +1,21 @@
 /*Mastermind by Kim Chung*/
 
 alert("Welcome to Mastermind!");
-var code = [], colors = ["r", "y", "g", "c", "b", "w"], guess = [], feedback = [], turn = 0;
+var code = [], colors = ["r", "y", "g", "c", "b", "w"], guess = [], feedback = [], turns = [], mmPrompt = null;
 setUp();
 while(feedback[3] != "b" && guess[0] != "q"){
-    turn++;
-    feedback = [];
-    getGuess();
-    analyzeGuess();
-    alert("Turn "+turn+"\nYour guess was: "+guess+"\nFeedback: "+feedback);
-    console.log("Turn "+turn+"\nYour guess was: "+guess+"\nFeedback: "+feedback);
+    guess = getGuess();
+    feedback = analyzeGuess();
+    addTurn();
 }
-if (feedback[3] == "b"){
-    alert("Congrats, you guessed it in "+turn+" turns!\nThanks for playing!");
+if (turns[turn][1][3] == "b"){
+    alert("Congrats, you guessed it in "+turns.length+" turns!\nThanks for playing!");
 }
 else alert("Quitter!");
 
 
 function setUp(){
+    code = [];
     for(var peg = 0; peg < 4; peg++){
         var color = Math.floor(Math.random()*6);
         code[peg] = colors[color];
@@ -27,14 +25,16 @@ function setUp(){
 }
 
 function getGuess(){
-    var guessString = prompt("Enter four colors for you guess. (separated by commas, no spaces)");
+    guess = [];
+    displayTurns();
+    var guessString = prompt(mmPrompt);
     guess = guessString.split(",");
     return guess;
 }
 
 function analyzeGuess(){
-    var guessedCode = [];
-    var goodGuesses = [];
+    var guessedCode = [], goodGuesses = [];
+    feedback = [];
     for(var i = 0; i < 4; i++){
         if (guess[i] == code[i]){
             feedback.push("b");
@@ -57,4 +57,22 @@ function analyzeGuess(){
         }
     }
     return feedback;
+}
+
+function addTurn(){
+    var turn = [];
+    turn.push(guess);
+    turn.push(feedback);
+    turns.push(turn);
+}
+
+function displayTurns(){
+    mmPrompt = "";
+    for(turn = 0; turn < turns.length; turn++){
+        mmPrompt += "Guess "+(turn + 1)+": ";
+        mmPrompt += turns[turn][0].join("");
+        mmPrompt += " || "+turns[turn][1].join("")+"\n";
+    }
+    mmPrompt += "\nEnter four colors surrounded by commas:";
+    return mmPrompt;
 }
